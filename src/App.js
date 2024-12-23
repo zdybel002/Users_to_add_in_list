@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 
-import FormCom from "./components/UserForm/UserForm";
-import Users from "./components/Users/Users";
+import CreateUser from "./Components/Users/CreateUser";
+import UserList from "./Components/Users/UserList";
 
-let userTable = [{ name: "Roman Zdybel", age: "20" }];
+const App = () => {
+  const [userList, setUserList] = useState([]);
 
-function App() {
-  const [allUsers, setAllUsers] = useState(userTable);
-  const onAddUserHandler = (user) => {
-    setAllUsers((prewUsers) => {
-      console.log([user, ...prewUsers]);
-      return [user, ...prewUsers];
+  const createUserHandler = (name, age) => {
+    setUserList((prevUserList) => {
+      return [...prevUserList, { name: name, age: age }];
     });
   };
   return (
     <div>
-      <FormCom onAddUser={onAddUserHandler}></FormCom>
-      <Users users={allUsers}></Users>
+      <CreateUser onCreateUser={createUserHandler}></CreateUser>
+      <UserList users={userList} />
     </div>
   );
-}
+};
 
 export default App;
