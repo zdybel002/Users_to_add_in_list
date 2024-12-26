@@ -12,10 +12,10 @@ const App = () => {
     });
   };
   return (
-    <div>
+    <React.Fragment>
       <CreateUser onCreateUser={createUserHandler}></CreateUser>
       <UserList users={userList} />
-    </div>
+    </React.Fragment>
   );
 };
 
